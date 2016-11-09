@@ -1,0 +1,11 @@
+** Lies Inputliste ein.
+
+** Solange Inputliste nicht leer ist, nimm einen Studenten von Inputliste.
+   
+*** Wenn Student keine Zulassung hat, hänge ihn an Liste "Ohne Zulassung" an.
+    Entferne ihn aus Inputliste.
+
+*** Sonst hänge ihn an an Liste "mit Zulassung" an.
+    Entferne ihn aus Inputliste.
+
+** Gib die gefüllten Listen aus.
