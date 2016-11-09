@@ -4,7 +4,7 @@ sum = a+b
 division = a/b
 intDivision = a//b
 remainder = a % b
-print( "Summe:" + str(sum))
+print("Summe:" + str(sum))
 print("Quotient: " + str(division))
 print("Ganzzahliger Quotient: " + str(intDivision))
 print("Rest:" + str(remainder))
