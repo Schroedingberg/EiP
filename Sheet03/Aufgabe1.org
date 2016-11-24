@@ -1,0 +1,47 @@
+#+AUTHOR: Anni, Jakub, Aaron
+* Syntaxfehler
+1) "3 a": Zwei Literale nebeneinander ohne Operatoren und vor einem "=". 
+#+BEGIN_SRC python
+3 a = a ∗ a ∗ a ;
+#+END_SRC
+2) Whitespace zwischen "*" und "=".
+#+BEGIN_SRC python 
+a ∗ = 3
+#+END_SRC
+
+* Semantik
+1) Tupel definiert obwohl Gleitkommazahl gemeint ist.
+#+BEGIN_SRC python
+x = 12 ,1
+#+END_SRC
+2) Lässt man Syntaxfehler und Pragmatikfehler außer acht, soll hier wohl \(3\cdot a \) als \(a\cdot a\cdot a\) definiert werden.
+#+BEGIN_SRC python
+3 a = a ∗ a ∗ a ;
+#+END_SRC
+* Pragmatikfehler
+1) Funktion len redefiniert mit `len(String)`. Es ist sehr verwirrend, wenn
+   builtin-Funktionen überschrieben werden.
+#+BEGIN_SRC python
+len=len ( String )
+#+END_SRC
+2) Sehr langer, prosaisch geschriebener String im Programm, dessen Bedeutung für
+   das Programm weder in einem Kommentar beschrieben wird, noch aus dem Inhalt hervorgeht.
+#+BEGIN_SRC python
+string = ” This placeholder text is gonna be HUGE . You are disgusting . I know words . I ←-
+have the best words . I think the only difference between me and the other placeholder←-
+text is that I am more honest and my words are more beautiful . Lorem Ipsum is ←-
+unattractive , both inside and out . I fully understand why it is former users left it ←-
+for something else . They made a good decision . You know , it really does not matter ←-
+what you write as long as you have got a young , and beautiful , piece of text . ”
+
+#+END_SRC
+* Coding-Style
+1) Im Variablennamen eine Zahl verwendet, die fälschlicherweise einen Wert der
+   Variablen impliziert.
+#+BEGIN_SRC python
+variable1 = 2
+#+END_SRC
+2) Unnütze whitespaces eingefügt.
+#+BEGIN_SRC python
+print ( string + String )
+#+END_SRC

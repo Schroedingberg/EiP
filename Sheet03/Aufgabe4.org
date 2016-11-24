@@ -1,0 +1,29 @@
+#+OPTIONS: toc:nil author:nil
+a)
+A = (not (a and b) and (a or b )) or ((a and b) or not (a or b))
+
+
+ | a     | b     | not a | not b | a and b | a or b | not (a and b) | not (a or b) | (not a) and (not b) | A    |
+ |-------+-------+-------+-------+---------+--------+---------------+--------------+---------------------+------|
+ | True  | True  | False | False | True    | True   | True          | False        | False               | True |
+ | True  | False | False | True  | False   | True   | False         | False        | False               | True |
+ | False | True  | True  | False | False   | True   | True          | False        | False               | True |
+ | False | False | True  | True  | False   | False  | False         | True         | True                | True |
+ |       |       |       |       |         |        |               |              |                     |      |
+
+b)
+#+BEGIN_LaTeX
+\begin{align*}
+  (\neg(a\land b) \land (a \lor b)) \lor ((a\land b) \lor \neg (a \lor b)) \Leftrightarrow&\\ 
+  ((\neg a \lor \neg b) \land (a \lor b)) \lor ((a \land b) \lor (\neg a \land \neg b)) \Leftrightarrow&\\
+(((\neg a \lor \neg b)\land a) \lor ((\neg a \lor \neg b)\land b)) \lor ((a \land b ) \lor (\neg a \land \neg b)) \Leftrightarrow&\\
+  ((\neg a \land a )\lor (a \land \neg b) \lor (\neg a \land b) \lor (\neg b \land b)) \lor (\neg(\neg(a\land b)) \lor (\neg a \land \neg b)) \Leftrightarrow&\\
+ (0 \lor (a \land \neg b ) \lor (\neg a \land b) \lor 0) \lor \neg((\neg a \lor \neg b) \land (a \lor b)) \Leftrightarrow&\\
+ (0 \lor (a \land \neg b ) \lor (\neg a \land b) \lor 0) \lor (1 \land \neg(\neg a \land b) \land \neg(\neg b \land a) \land 1)\Leftrightarrow&\\
+ (0 \lor (a \land \neg b ) \lor (\neg a \land b) \lor 0) \lor (1 \land ( a \lor \neg b) \land (b \lor \neg a) \land 1)\Leftrightarrow& \\
+ \neg(1 \land \neg (a \land \neg b) \land \neg(\neg a \land b) \land 1) \lor  (1 \land ( a \lor \neg b) \land (b \lor \neg a) \land 1) \Leftrightarrow&\\
+ \neg(1 \land (\neg a \lor b) \land (a \lor \neg b) \land 1) \lor (1 \land (a \land \neg b) \land (b \lor \neg a) \land 1) \Leftrightarrow&\\
+ \neg(1 \land (\neg a \lor b) \land (a \lor \neg b) \land 1) \lor (1 \land (\neg a \lor b) \land ( a \lor \neg b )\land 1)\\
+\end{align*}
+#+END_LaTeX
+Der letzte Term ist äquivalent zu \(\neg \phi \lor \phi, \phi \in {0,1}\), was immer wahr (1) sein müsste.

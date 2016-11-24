@@ -1,0 +1,91 @@
+* A version where you provide a limit for the numbers a,b,c,d
+#+BEGIN_SRC python :results table :tangle no
+cubesums = []
+r = range(1,20)
+for a in r:
+    for b in r:
+        for c in r:
+            for d in r:
+                if not (a == b or a == c or a == d or  b == c or b == d or  c == d ):
+                    AB = a**3+b**3
+                    CD = c**3+d**3
+                    if AB == CD:
+                        cubesums.append(AB)
+
+        
+return set(cubesums)
+#+END_SRC
+
+#+RESULTS:
+| 4104 | 1729 | 13832 | 20683 |
+* A version where you provide a limit as n
+#+BEGIN_SRC python :results table
+
+
+def is_cubesum(x):
+    r = range(1,x)
+    for a in r:
+        for b in r:
+            for c in r:
+                for d in r:
+                    if not (a == b or a == c or a == d or  b == c or b == d or  c == d ):
+                        AB = a**3+b**3
+                        CD = c**3+d**3
+                        if AB == CD:
+                            return True
+
+cubesums = []
+r = range(1,5000)
+for i in r:
+    if is_cubesum(i):
+        cubesums.append(i)
+return cubesums
+# Use de Morgan's law to avoid many 'and not' 
+#if not (a == b or a == c or a == d or  b == c or b == d or  c == d ):
+
+                    
+
+
+#+END_SRC
+
+#+RESULTS:
+|   |
+
+* Experiments with list comprehensions
+#+BEGIN_SRC python :results table
+r = range(1,25)
+
+cubesums = [[a**3+b**3] for d in r for c in r for b in r for a in r 
+                if a**3+b**3 == c**3+d**3
+                and a != b and a != c and  a !=d and b != c and b !=d and c != d]
+
+
+return cubesums
+#+END_SRC
+
+#+RESULTS:
+|  1729 |
+|  1729 |
+|  4104 |
+|  4104 |
+| 13832 |
+| 13832 |
+|  1729 |
+|  1729 |
+|  4104 |
+|  4104 |
+|  1729 |
+|  1729 |
+|  1729 |
+|  1729 |
+|  4104 |
+|  4104 |
+|  4104 |
+|  4104 |
+| 13832 |
+| 13832 |
+| 13832 |
+| 13832 |
+| 13832 |
+| 13832 |
+
