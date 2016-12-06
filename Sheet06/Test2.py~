@@ -1,0 +1,3 @@
+import numpy as np
+
+A = [2, -6, 2, -1]

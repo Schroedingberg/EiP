@@ -1,0 +1,4 @@
+import random
+# Assumption: Random numbers in the task refer to unifiedly
+# distributed random numbers
+x = [random.uniform(0, 1000) for i in range(100)]

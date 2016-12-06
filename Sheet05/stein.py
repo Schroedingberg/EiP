@@ -16,23 +16,23 @@ def stein_rec(A, B, k=0):
     argument, however
     """
     if A == 0:
-        return B*2**k
+        return int(B * 2**k)
     if B == 0:
-        return A*2**k
+        return A * 2**k
     if even(A) and even(B):
-        return stein_rec(A/2, B/2, k+1)
+        return stein_rec(A / 2, B / 2, k + 1)
     if even(A) and not even(B):
-        return stein_rec(A/2, B, k)
+        return stein_rec(A / 2, B, k)
     if even(B) and not even(A):
-        return stein_rec(A, B/2, k)
+        return stein_rec(A, B / 2, k)
     elif A >= B:
-        return stein_rec((A-B)/2, B, k)
+        return stein_rec((A - B) / 2, B, k)
     elif B > A:
-        return stein_rec(A, (B-A)/2, k)
-
-values = input()
-valuelist = values.split("\n")
-n = int(valuelist[0])+1
-ABs = [[int(i) for i in AB.split(" ")]for AB in valuelist[1:]]
-for zahlenpaar in ABs:
-    print(stein_rec(zahlenpaar[0], zahlenpaar[1], 0))
+        return stein_rec(A, (B - A) / 2, k)
+n = int(input())
+values = []
+for i in range(n):
+    values.append([int(x) for x in input().split(" ")])
+for elem in values:
+    A, B = elem[0], elem[1]
+    print(stein_rec(A, B))
