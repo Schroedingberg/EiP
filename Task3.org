@@ -41,10 +41,10 @@ def calculate(a, b, n):
    \(d = (d\cdot d) \bmod n
    \overset{\text{IV}}{=} (a^{b[:i]}\bmod n)^2 \bmod n = a^{b[:i].append(0)} \bmod n\) 
    wegen Rechenregeln für binäre Zahlen.
-   Wenn \(b[i+1] = 0\) ist die Schleife beendet und die Invariante gilt noch, weil
+   Wenn \(b[i+1] = 0\) ist der aktuelle Schleifendurchlauf beendet und die Invariante gilt noch, weil
    \(b[:i].append(0) = b[:i+1]\).  Ist \(b[i+1] = 1 \)
    wird \(d= (d\cdot a) \bmod n = (a^{b[:i].append(0)} \cdot a) \bmod
-   n = (a^{b[:i].append(1)}\bmod n)\) und die Schleife ist beendet
+   n = (a^{b[:i].append(1)}\bmod n)\) und der aktuelle Schleifendurchlauf ist beendet
    und die Invariante gilt noch, weil \(b[:i].append(1) = b[:i+1]\).
 ** Terminierung
    Die Schleife terminiert, weil die Elemente in b eine endliche Anzahl haben.
