@@ -37,7 +37,8 @@ def calculate(a, b, n):
 ** Voraussetzung (IV)
    I(i) gelte für ein festes beliebiges \(i \in \mathbb{N}\).
 ** Erhaltung der Schleifeninvariante (Induktionsschritt)
-   \(i \rightarrow i+1:\) \(d = (d\cdot d) \bmod n
+   Schritt:\(i \rightarrow i+1\)\\
+   \(d = (d\cdot d) \bmod n
    \overset{\text{IV}}{=} (a^{b[:i]}\bmod n)^2 \bmod n = a^{b[:i].append(0)} \bmod n\) 
    wegen Rechenregeln für binäre Zahlen.
    Wenn \(b[i+1] = 0\) ist die Schleife beendet und die Invariante gilt noch, weil
