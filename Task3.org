@@ -1,0 +1,53 @@
+#+OPTIONS: toc:nil
+#+AUTHOR: Anni, Daniel, Aaron
+* Korrektheitsbeweis
+Algorithmus, gegeben als Python-Programm:
+#+BEGIN_SRC python
+def calculate(a, b, n):
+    c = 0
+    d = 1
+    for i in b:
+        c *= 2
+        d = (d * d) % n
+        if i == 1:
+            c += 1
+            d = (d * a) % n
+    return d
+#+END_SRC
+Die Variable \(c\) ist für das geforderte Ergebnis \(a^b \bmod n\) nicht relevant. 
+Darum wird für den Korrektheitsbeweis folgende Variante betrachtet:
+#+BEGIN_SRC python
+def calculate(a, b, n):
+    d = 1
+    for i in b:
+        d = (d * d) % n
+        if i == 1:
+            d = (d * a) % n
+    return d
+#+END_SRC
+
+#+RESULTS:
+: None
+
+** Anfang
+   Als Schleifeninvariante wird folgende Aussage gewählt:
+   \(I(i): d = a^{b[:i]}\bmod n\)\\
+   Um zu zeigen, dass die Schleifeninvariante vor Betreten der for-Schleife gilt, wird \(I(0)\) betrachtet:
+   \(I(0): d = a^0 \bmod n = 1 \bmod n = 1\) wahr \(\forall n \in \mathbb{N}\).
+** Voraussetzung (IV)
+   I(i) gelte für ein festes beliebiges \(i \in \mathbb{N}\).
+** Erhaltung der Schleifeninvariante (Induktionsschritt)
+   \(i \rightarrow i+1:\) \(d = (d\cdot d) \bmod n
+   \overset{\text{IV}}{=} (a^{b[:i]}\bmod n)^2 \bmod n = a^{b[:i].append(0)} \bmod n\) 
+   wegen Rechenregeln für binäre Zahlen.
+   Wenn \(b[i+1] = 0\) ist die Schleife beendet und die Invariante gilt noch, weil
+   \(b[:i].append(0) = b[:i+1]\).  Ist \(b[i+1] = 1 \)
+   wird \(d= (d\cdot a) \bmod n = (a^{b[:i].append(0)} \cdot a) \bmod
+   n = (a^{b[:i].append(1)}\bmod n)\) und die Schleife ist beendet
+   und die Invariante gilt noch, weil \(b[:i].append(1) = b[:i+1]\).
+** Terminierung
+   Die Schleife terminiert, weil die Elemente in b eine endliche Anzahl haben.
+   Nach der letzten Iteration gilt demnach:  \(d = a^{b[:]} \bmod n = a^b \bmod n\)\\
+   
+   Der Algorithmus ist korrekt und terminiert QED.
+
